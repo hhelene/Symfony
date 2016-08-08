@@ -60,6 +60,19 @@ public function indexAction($page)
 
         'content' => 'Nous proposons un poste pour webdesigner. Blabla…',
 
+        'date'    => new \Datetime()),
+
+   
+            array(
+
+        'title'   => 'Offre de stage référenceur',
+
+        'id'      => 4,
+
+        'author'  => 'Mathilde',
+
+        'content' => 'Nous proposons un stage de référenceur dans la mode. Blabla…',
+
         'date'    => new \Datetime())
 
     );
@@ -132,7 +145,7 @@ public function indexAction($page)
       return $this->redirectToRoute('oc_platform_view', array('id' => 5));
     }
      $advert = array(
-      'title'   => 'Recherche développpeur Symfony',
+      'title'   => 'Recherche développeur Symfony',
       'id'      => $id,
       'author'  => 'Alexandre',
       'content' => 'Nous recherchons un développeur Symfony débutant sur Lyon. Blabla…',
@@ -152,7 +165,6 @@ public function indexAction($page)
   }
   
   public function menuAction($limit)
-
   {
 
     // On fixe en dur une liste ici, bien entendu par la suite
