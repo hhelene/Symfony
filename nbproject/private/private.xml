@@ -20,15 +20,18 @@
             <file>file:/Applications/MAMP/htdocs/Symfony/src/OC/PlatformBundle/DataFixtures/ORM/LoadSkill.php</file>
             <file>file:/Applications/MAMP/htdocs/Symfony/src/OC/PlatformBundle/Controller/AdvertController.php</file>
             <file>file:/Applications/MAMP/htdocs/Symfony/app/Resources/TwigBundle/views/Exception/error404.html.twig</file>
+            <file>file:/Applications/MAMP/htdocs/Symfony/app/AppKernel.php</file>
             <file>file:/Applications/MAMP/htdocs/Symfony/src/OC/CoreBundle/Resources/config/routing.yml</file>
             <file>file:/Applications/MAMP/htdocs/Symfony/src/OC/CoreBundle/Resources/config/services.yml</file>
             <file>file:/Applications/MAMP/htdocs/Symfony/src/OC/PlatformBundle/Resources/views/Advert/form.html.twig</file>
             <file>file:/Applications/MAMP/htdocs/Symfony/src/OC/PlatformBundle/Entity/Image.php</file>
+            <file>file:/Applications/MAMP/htdocs/Symfony/src/OC/PlatformBundle/DoctrineListener/ApplicationCreationListener.php</file>
             <file>file:/Applications/MAMP/htdocs/Symfony/app/config/parameters.yml</file>
             <file>file:/Applications/MAMP/htdocs/Symfony/src/OC/PlatformBundle/Repository/ImageRepository.php</file>
             <file>file:/Applications/MAMP/htdocs/Symfony/src/OC/PlatformBundle/Resources/views/Advert/edit.html.twig</file>
             <file>file:/Applications/MAMP/htdocs/Symfony/src/OC/PlatformBundle/Entity/Application.php</file>
             <file>file:/Applications/MAMP/htdocs/Symfony/src/OC/CoreBundle/Resources/views/layout.html.twig</file>
+            <file>file:/Applications/MAMP/htdocs/Symfony/app/config/services.yml</file>
             <file>file:/Applications/MAMP/htdocs/Symfony/app/config/config.yml</file>
             <file>file:/Applications/MAMP/htdocs/Symfony/src/OC/PlatformBundle/Resources/views/Advert/view.html.twig</file>
             <file>file:/Applications/MAMP/htdocs/Symfony/app/Resources/views/base.html.twig</file>
@@ -37,8 +40,10 @@
             <file>file:/Applications/MAMP/htdocs/Symfony/src/OC/PlatformBundle/Resources/views/Advert/menu.html.twig</file>
             <file>file:/Applications/MAMP/htdocs/Symfony/src/OC/PlatformBundle/Repository/ApplicationRepository.php</file>
             <file>file:/Applications/MAMP/htdocs/Symfony/src/OC/PlatformBundle/Entity/Advert.php</file>
+            <file>file:/Applications/MAMP/htdocs/Symfony/app/config/security.yml</file>
             <file>file:/Applications/MAMP/htdocs/Symfony/src/OC/PlatformBundle/Repository/AdvertSkillRepository.php</file>
             <file>file:/Applications/MAMP/htdocs/Symfony/src/OC/PlatformBundle/Resources/views/Advert/add.html.twig</file>
+            <file>file:/Applications/MAMP/htdocs/Symfony/src/OC/PlatformBundle/Email/ApplicationMailer.php</file>
         </group>
     </open-files>
 </project-private>

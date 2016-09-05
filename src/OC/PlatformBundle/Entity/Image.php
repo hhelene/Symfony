@@ -1,45 +1,39 @@
 <?php
+// src/OC/PlatformBundle/Entity/Image.php
 
 namespace OC\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Image
- *
  * @ORM\Table(name="oc_image")
- * @ORM\Entity(repositoryClass="OC\PlatformBundle\Repository\ImageRepository")
+ * @ORM\Entity
  */
 class Image
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+  /**
+   * @ORM\Column(name="id", type="integer")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=255)
-     */
-    private $url;
+  /**
+   * @ORM\Column(name="url", type="string", length=255)
+   */
+  private $url;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="alt", type="string", length=255)
-     */
-    private $alt;
-
+  /**
+   * @ORM\Column(name="alt", type="string", length=255)
+   */
+  private $alt;
+  
+  // Getters et setters
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -94,4 +88,3 @@ class Image
         return $this->alt;
     }
 }
-
