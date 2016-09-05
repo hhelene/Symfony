@@ -1,5 +1,6 @@
 {
     "name": "helenehabertjacquot/symfony",
+    "description": "Premiers pas Symfony",
     "license": "proprietary",
     "type": "project",
     "autoload": {
