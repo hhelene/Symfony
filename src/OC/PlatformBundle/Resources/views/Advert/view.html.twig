@@ -44,26 +44,7 @@
       <li>Pas (encore !) de candidatures</li>
     {% endfor %}
 </ul>
-    <p>
-{% if not advert.categories.empty %}
-  
-    Cette annonce est parue dans les catégories suivantes :
-    {% for category in advert.categories %}
-      {{ category.name }}{% if not loop.last %}, {% endif %}
-    {% endfor %}
 
-{% endif %}
-
- 
-
-
-    
- {% for category in advert.categories %}
-           {{ advert.title }}{% if not loop.last %}, {% endif %}
-         {% endfor %}
-
-      
-    </p>
   <p>
 {% if listAdvertSkills|length > 0 %}
 

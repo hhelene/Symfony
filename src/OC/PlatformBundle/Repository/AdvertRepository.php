@@ -12,25 +12,25 @@ use Doctrine\ORM\QueryBuilder;
  */
 class AdvertRepository extends \Doctrine\ORM\EntityRepository
 {
-     public function getAdvertWithCategories(array $categoryNames)
-  {
-    $qb = $this->createQueryBuilder('a');
+    public function getAdverts()
 
-    // On fait une jointure avec l'entité Category avec pour alias « c »
-    $qb
-      ->innerJoin('a.categories', 'c')
-      ->addSelect('c')
-    ;
+    {
+        $query = $this->createQueryBuilder('a')
 
-    // Puis on filtre sur le nom des catégories à l'aide d'un IN
-    $qb->where($qb->expr()->in('c.name', $categoryNames));
-    // La syntaxe du IN et d'autres expressions se trouve dans la documentation Doctrine
+            // Jointure sur l'attribut image
+            ->leftJoin('a.image', 'i')
+            ->addSelect('i')
 
-    // Enfin, on retourne le résultat
-    return $qb
-      ->getQuery()
-      ->getResult()
-    ;
+            // Jointure sur l'attribut categories
+            ->leftJoin('a.categories', 'c')
+            ->addSelect('c')
+            ->orderBy('a.date', 'DESC')
+
+            ->getQuery()
+        ;
+
+        return $query->getResult();
+    }
   }
   
-}
+
