@@ -85,7 +85,6 @@ class Application
   {
     return $this->author;
   }
-
   /**
    * @param string $content
    */
