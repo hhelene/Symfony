@@ -36,7 +36,7 @@
       <li>
     
           {{ application.content }}
-        </a>
+
         par {{ application.author }},
         le {{ application.date|date('d/m/Y') }}
       </li>
@@ -45,6 +45,20 @@
     {% endfor %}
 </ul>
 
+
+
+        {% if not advert.categories.empty %}
+            <p>
+            Cette annonce est parue dans les catégories suivantes :
+    <ul>
+            {% for category in advert.categories %}
+                <li>{{category.name}}{% if not loop.last %}, {% endif %}</li>
+            {% endfor %}
+
+</ul>
+
+    </p>
+        {% endif %}
   <p>
 {% if listAdvertSkills|length > 0 %}
 

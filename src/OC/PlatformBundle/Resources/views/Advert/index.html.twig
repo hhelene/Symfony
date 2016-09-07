@@ -25,16 +25,28 @@
 
         <a href="{{ path('oc_platform_view', {'id': advert.id}) }}">
 
-          {{ advert.title }}
+          {{ advert.title }}<br/>
+            {% if advert.image is not null %}
 
-        </a>
+                <img src="{{ advert.image.url }}" alt="{{ advert.image.alt }}">
 
+            {% endif %}
+
+        </a><br/>
+        {% for category in advert.categories %}
+            <li>{{category.name}}{% if not loop.last %}, {% endif %}</li>
+        {% endfor %}</br>
         par {{ advert.author }},
 
-        le {{ advert.date|date('d/m/Y') }}
+        le {{ advert.date|date('d/m/Y') }}<br/>
 
       </li>
 
+        {% for advertskill in advert.advertskills %}
+
+            <li>{{ advertskill.skill.name}} - {{ advertskill.level}}</li>
+        {% endfor %}
+        <hr>
     {% else %}
 
       <li>Pas (encore !) d'annonces</li>

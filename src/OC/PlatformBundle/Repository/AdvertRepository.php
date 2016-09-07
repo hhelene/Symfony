@@ -26,6 +26,10 @@ class AdvertRepository extends \Doctrine\ORM\EntityRepository
             ->addSelect('c')
             ->orderBy('a.date', 'DESC')
 
+            // Jointure sur l'attribut advertskills
+            ->leftJoin('a.advertskills', 's')
+            ->addSelect('s')
+
             ->getQuery()
         ;
 

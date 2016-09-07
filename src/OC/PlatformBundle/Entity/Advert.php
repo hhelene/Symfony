@@ -58,10 +58,16 @@ class Advert
   private $categories;
 
   /**
-   * @ORM\OneToMany(targetEntity="OC\PlatformBundle\Entity\Application", mappedBy="advert")
-   */
+* @ORM\OneToMany(targetEntity="OC\PlatformBundle\Entity\Application", mappedBy="advert")
+*/
 
-  private $applications; // Notez le « s », une annonce est liée à plusieurs candidatures
+    private $applications; // Notez le « s », une annonce est liée à plusieurs candidatures
+
+    /**
+     * @ORM\OneToMany(targetEntity="OC\PlatformBundle\Entity\AdvertSkill", mappedBy="advert")
+     */
+
+    private $advertskills; // Notez le « s », une annonce est liée à plusieurs compétences
   
   /**
    * @ORM\Column(name="updated_at", type="datetime", nullable=true)
@@ -84,6 +90,7 @@ class Advert
     $this->date         = new \Datetime();
     $this->categories   = new ArrayCollection();
     $this->applications = new ArrayCollection();
+      $this->advertskills = new ArrayCollection();
   }
 
   /**
@@ -113,6 +120,14 @@ class Advert
   }
 
   /**
+   * @return \DateTime
+   */
+  public function getDate()
+  {
+    return $this->date;
+  }
+
+  /**
    * @param \DateTime $date
    */
   public function setDate($date)
@@ -121,11 +136,11 @@ class Advert
   }
 
   /**
-   * @return \DateTime
+   * @return string
    */
-  public function getDate()
+  public function getTitle()
   {
-    return $this->date;
+    return $this->title;
   }
 
   /**
@@ -139,9 +154,9 @@ class Advert
   /**
    * @return string
    */
-  public function getTitle()
+  public function getAuthor()
   {
-    return $this->title;
+    return $this->author;
   }
 
   /**
@@ -155,9 +170,9 @@ class Advert
   /**
    * @return string
    */
-  public function getAuthor()
+  public function getContent()
   {
-    return $this->author;
+    return $this->content;
   }
 
   /**
@@ -169,11 +184,11 @@ class Advert
   }
 
   /**
-   * @return string
+   * @return bool
    */
-  public function getContent()
+  public function getPublished()
   {
-    return $this->content;
+    return $this->published;
   }
 
   /**
@@ -184,22 +199,14 @@ class Advert
     $this->published = $published;
   }
 
-  /**
-   * @return bool
-   */
-  public function getPublished()
+  public function getImage()
   {
-    return $this->published;
+    return $this->image;
   }
 
   public function setImage(Image $image = null)
   {
     $this->image = $image;
-  }
-
-  public function getImage()
-  {
-    return $this->image;
   }
 
   /**
@@ -254,14 +261,6 @@ class Advert
   }
 
   /**
-   * @param \DateTime $updatedAt
-   */
-  public function setUpdatedAt(\Datetime $updatedAt = null)
-  {
-      $this->updatedAt = $updatedAt;
-  }
-
-  /**
    * @return \DateTime
    */
   public function getUpdatedAt()
@@ -270,11 +269,11 @@ class Advert
   }
 
   /**
-   * @param integer $nbApplications
+   * @param \DateTime $updatedAt
    */
-  public function setNbApplications($nbApplications)
+  public function setUpdatedAt(\Datetime $updatedAt = null)
   {
-      $this->nbApplications = $nbApplications;
+      $this->updatedAt = $updatedAt;
   }
 
   /**
@@ -287,11 +286,11 @@ class Advert
   }
 
   /**
-   * @param string $slug
+   * @param integer $nbApplications
    */
-  public function setSlug($slug)
+  public function setNbApplications($nbApplications)
   {
-      $this->slug = $slug;
+      $this->nbApplications = $nbApplications;
   }
 
   /**
@@ -302,4 +301,48 @@ class Advert
 
       return $this->slug;
   }
+
+  /**
+   * @param string $slug
+   */
+  public function setSlug($slug)
+  {
+      $this->slug = $slug;
+  }
+
+    /**
+     * Add advertskill
+     *
+     * @param \OC\PlatformBundle\Entity\AdvertSkill $advertskill
+     *
+     * @return Advert
+     */
+    public function addAdvertskill(\OC\PlatformBundle\Entity\AdvertSkill $advertskill)
+    {
+        $this->advertskills[] = $advertskill;
+
+// On lie l'annonce à la compétence
+        $advertskill->setAdvert($this);
+
+    }
+
+    /**
+     * Remove advertskill
+     *
+     * @param \OC\PlatformBundle\Entity\AdvertSkill $advertskill
+     */
+    public function removeAdvertskill(\OC\PlatformBundle\Entity\AdvertSkill $advertskill)
+    {
+        $this->advertskills->removeElement($advertskill);
+    }
+
+    /**
+     * Get advertskills
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAdvertskills()
+    {
+        return $this->advertskills;
+    }
 }
