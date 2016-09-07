@@ -23,15 +23,28 @@ public function indexAction($page)
       // une page d'erreur 404 (qu'on pourra personnaliser plus tard d'ailleurs)
       throw new NotFoundHttpException('Page "'.$page.'" inexistante.');
     }
+      // Ici je fixe le nombre d'annonces par page à 3
+      // Mais bien sûr il faudrait utiliser un paramètre, et y accéder via $this->container->getParameter('nb_per_page')
+      $nbPerPage = 3;
+
+      // On récupère notre objet Paginator
       $listAdverts = $this->getDoctrine()//on n'utilise plus findAll mais getAdverts méth défini dans AdvertReposotory pour charger ttes les infos des annonces
           ->getManager()
           ->getRepository('OCPlatformBundle:Advert')
-          ->getAdverts()
+          ->getAdverts($page, $nbPerPage)
       ;
+      // On calcule le nombre total de pages grâce au count($listAdverts) qui retourne le nombre total d'annonces
+      $nbPages = ceil(count($listAdverts) / $nbPerPage);
 
-      // L'appel de la vue ne change pas
+      // Si la page n'existe pas, on retourne une 404
+      if ($page > $nbPages) {
+          throw $this->createNotFoundException("La page ".$page." n'existe pas.");
+      }
+      // on donne les infos nécessaires à la vue our la pagination
       return $this->render('OCPlatformBundle:Advert:index.html.twig', array(
           'listAdverts' => $listAdverts,
+          'nbPages'     => $nbPages,
+          'page'        => $page,
       ));
   }
 
